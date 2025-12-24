@@ -291,6 +291,7 @@ export default function LoanForm() {
                             <div className="ml-auto">
                                 {step < 3 ? (
                                     <button
+                                        key="next-btn"
                                         type="button"
                                         onClick={nextStep}
                                         className="flex items-center gap-2 px-8 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all shadow-lg shadow-blue-900/20"
@@ -299,6 +300,7 @@ export default function LoanForm() {
                                     </button>
                                 ) : (
                                     <button
+                                        key="submit-btn"
                                         type="submit"
                                         disabled={loading}
                                         className="flex items-center gap-2 px-10 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] disabled:opacity-50"
