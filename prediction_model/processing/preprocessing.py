@@ -60,5 +60,5 @@ class LogTransforms(BaseEstimator,TransformerMixin):
     def transform(self,X):
         X = X.copy()
         for col in self.variables:
-            X[col] = np.log(X[col])
+            X[col] = np.log(X[col].clip(lower=1e-6))
         return X

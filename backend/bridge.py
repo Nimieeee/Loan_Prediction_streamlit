@@ -2,7 +2,11 @@ import sys
 import json
 import pandas as pd
 import os
+import warnings
 from pathlib import Path
+
+# Suppress warnings to prevent them from contaminating stdout
+warnings.filterwarnings("ignore")
 
 # Add project root to sys.path to allow imports from prediction_model
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
