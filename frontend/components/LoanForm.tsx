@@ -32,10 +32,10 @@ export default function LoanForm() {
         no_of_dependents: 0,
         education: "Graduate",
         self_employed: "No",
-        income_annum: 100000,
-        loan_amount: 50000,
-        loan_term: 5,
-        cibil_score: 700,
+        income_annum: 0,
+        loan_amount: 0,
+        loan_term: 0,
+        cibil_score: 0,
         residential_assets_value: 0,
         commercial_assets_value: 0,
         luxury_assets_value: 0,
@@ -52,6 +52,8 @@ export default function LoanForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (step < 3) return; // Prevent submission unless on last step
+
         setLoading(true);
         setResult(null);
 
@@ -77,7 +79,16 @@ export default function LoanForm() {
                 </div>
 
                 {!result ? (
-                    <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+                    <form
+                        onSubmit={handleSubmit}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter" && step < 3) {
+                                e.preventDefault();
+                                nextStep();
+                            }
+                        }}
+                        className="space-y-8 relative z-10"
+                    >
                         <div className="flex items-center justify-between mb-8">
                             <div>
                                 <h2 className="text-3xl font-bold text-white mb-2">Loan Calculator</h2>
