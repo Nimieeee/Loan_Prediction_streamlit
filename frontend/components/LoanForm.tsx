@@ -82,9 +82,9 @@ export default function LoanForm() {
                     <form
                         onSubmit={handleSubmit}
                         onKeyDown={(e) => {
-                            if (e.key === "Enter" && step < 3) {
+                            if (e.key === "Enter") {
                                 e.preventDefault();
-                                nextStep();
+                                if (step < 3) nextStep();
                             }
                         }}
                         className="space-y-8 relative z-10"
